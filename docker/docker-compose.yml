@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  # apache
+  php:
+    container_name: ${COMPOSE_PROJECT_NAME}-php
+    image: php:8.2-apache
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    environment:
+      DOCUMENT_ROOT: ${DIR_WEB_DOCUMENT_ROOT}
+      LOGS_DIR: ${DIR_WEB_LOGS}
+    ports:
+      - 8080:80
+    volumes:
+      - ../src/htdocs:/var/www/html/htdocs
+      - ./apache:/etc/apache2/sites-enabled
+      - ./apache/logs:${DIR_WEB_LOGS}
+      - ./php/php.ini:/usr/local/etc/php/php.ini
+      - ./config_local:/var/www/html/config
