@@ -23,6 +23,9 @@ https://www.ritolab.com/posts/172#%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%
 - 超基礎PHP
   - バシャログ
   - 他にもあった気がする（スプレッドシート）
+- ソフトウェア設計
+  - Head first design pattern
+  - 軽量ddd
 - SQL
   - SQLアンチパターン
   - SQL100本ノック
