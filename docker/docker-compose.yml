@@ -14,9 +14,7 @@ services:
     ports:
       - 8080:80
     volumes:
-#      - ../src/htdocs:/var/www/html/htdocs //TODO: 要確認
       - ../src:/var/www/html
       - ./apache:/etc/apache2/sites-enabled
       - ./apache/logs:${DIR_WEB_LOGS}
       - ./php/php.ini:/usr/local/etc/php/php.ini
-      - ./config_local:/var/www/html/config
