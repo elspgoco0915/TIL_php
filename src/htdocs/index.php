@@ -5,7 +5,7 @@ declare(strict_types=1);
 const __PROJECT_ROOT__ = "/var/www/html";
 require_once "../bootstrap/bootstrap.php";
 
-use App\Controllers\SampleController;
-
-$controller = new SampleController();
+$controller = $container->get('IndexController');
 $controller->index();
+// $controller = new SampleController();
+// $controller->index();

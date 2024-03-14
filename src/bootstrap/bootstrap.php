@@ -7,3 +7,7 @@ $dotenv = Dotenv\Dotenv::createImmutable(__PROJECT_ROOT__);
 $dotenv->load();
 
 Configure\Configure::Instance();
+
+$builder = new DI\ContainerBuilder();
+$builder->addDefinitions('../bootstrap/container.php');
+$container = $builder->build();
