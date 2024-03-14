@@ -32,6 +32,7 @@ https://www.ritolab.com/posts/172#%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%
   - array shapes記法などの配列の型
 - ツール
   - PHPUnit
+  - cron
 - docker
   - mailcatcher載せてみる
 - セキュリティ
