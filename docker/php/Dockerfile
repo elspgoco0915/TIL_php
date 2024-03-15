@@ -6,7 +6,7 @@ RUN chmod 644 /usr/local/etc/php/php.ini
 RUN a2enmod deflate expires rewrite
 
 RUN apt-get update \
-  && apt-get install -y zlib1g-dev vim libzip-dev \
+  && apt-get install -y zlib1g-dev vim libzip-dev git \
   && docker-php-ext-install zip pdo_mysql
 
 # Composer install
