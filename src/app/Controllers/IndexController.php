@@ -32,6 +32,12 @@ class IndexController
         echo $orange->value;
         echo $other->value;
 
+        // 野菜を取得
+        $all = Food::getCases();
+        $vege = Food::getVegetables();
+        $frui = Food::getFruits();
+        var_dump($vege, $frui, $all);
+        echo "<hr>";
 
         $keyValueArray = Food::getKeyValue();
         var_dump($keyValueArray);
@@ -42,7 +48,6 @@ class IndexController
         echo $status->name;
         echo $status->text();
         
-        // var_dump(Food::cases());
 
         var_dump($this->SampleService->index());exit;
     }
