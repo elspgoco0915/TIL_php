@@ -37,6 +37,7 @@ https://www.ritolab.com/posts/172#%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%
     - 可変超引数を用いて、配列中身のタイプヒント
     - ArrayObjectでタイプヒント
     - DTO
+  - Enum
 - ツール
   - PHPUnit
   - cron
