@@ -35,6 +35,8 @@ enum Food : string
      * @param array [Food...] $filters
      * @return array
      */
+    // NOTE: Splat Operatorで可変超引数を用いて配列の中身をタイプヒントしている
+    //          配列の中身はFoodEnumしか入れないようになる
     public static function getCases(Food ...$filters): array
     {
         // 引数がない場合、全て返す
