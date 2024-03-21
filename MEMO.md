@@ -43,6 +43,7 @@ https://www.ritolab.com/posts/172#%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%
   - cron
 - docker
   - mailcatcher載せてみる
+  - DBも載せる
 - セキュリティ
   - 体系的に学ぶ 安全なWebアプリケーションの作り方
 
