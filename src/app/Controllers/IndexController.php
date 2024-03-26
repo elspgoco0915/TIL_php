@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
+use App\Dtos\UserDto;
 use App\Enums\AccountStatus;
 use App\Enums\Food;
 use PDO;
@@ -20,6 +21,11 @@ class IndexController
     public function index()
     {
         self::communicationDB();
+
+        // feature/#4 
+        $user = self::getUser(1);
+        $user = self::decorateUser($user);
+        var_dump($user);
 
         // feature/#5 enums
         $foods = Food::cases();
@@ -87,6 +93,31 @@ class IndexController
         $stmt->bindValue(':name', $name, PDO::PARAM_STR);
         $stmt->execute();
         exit;
+    }
+
+    /**
+     * DTOでユーザー取得
+     * @param int $id
+     * @return UserDto | null
+     */
+    public function getUser(int $id): UserDto | null{
+        $pdo = new PDO('mysql:host=til_php-db;dbname=til_php', 'til_php', 'til_php-pw');
+        $stmt = $pdo->prepare("SELECT id, name FROM users WHERE id = :id");
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $users = $stmt->fetch(PDO::FETCH_ASSOC);
+        return ($users) ? new UserDto(...$users) : null;
+    }
+
+    /**
+     * DTOでユーザー加工
+     * @param int $id
+     * @return UserDto
+     */
+    public function decorateUser(UserDto $user)
+    {
+        $user->isSomething = true;
+        return $user;
     }
 
 }
