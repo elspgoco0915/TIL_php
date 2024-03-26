@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="number" id="test-number" name="number">
+    <button id="test-btn">テスト</button>
+    <hr>
+    <input type="text" id="test-input" disabled>
+
+    <script>
+        const btn = document.getElementById('test-btn');
+        const input = document.getElementById('test-input');
+        const number = document.getElementById('test-number');
+        const fetchApi = () => {
+            const params = {
+                "num" : number.value,
+            };
+            const query = new URLSearchParams(params);
+            fetch('/api/index.php?'+query, {
+                method: 'GET',
+                headers: new Headers({'Content-type' : 'application/x-www-form-urlencoded' })
+            })
+            .then((response) => {
+                return response.json();
+            })
+            .then((obj) => {
+                input.value = obj.message;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        };
+
+        btn.addEventListener("click", fetchApi);
+    </script>
+</body>
+</html>
