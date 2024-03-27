@@ -20,6 +20,20 @@ class IndexController
 
     public function index()
     {
+        # feature/#1 メール送受信
+        $to = 'mailcatcher@test.com';
+        $subject = 'これはmailcatcherのテストです。';
+        $message = 'mailcatcherのテスト';
+        $additionalHeaders = [
+            'From' => 'noreply@test.com'
+        ];
+        if (!mb_send_mail($to, $subject, $message, $additionalHeaders)) {
+        echo 'メールの送信に失敗しました。';
+        } else {
+        echo 'メールを送信しました';
+        }
+
+        # feature/#1 DB疎通
         self::communicationDB();
 
         // feature/#4 
