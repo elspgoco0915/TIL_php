@@ -30,3 +30,8 @@ mysql -u til_php -p
 
 # PWはdocker-compose.yml参照
 ```
+
+## how to access
+- [localhost](http://localhost:8080/)
+- [localhost/api](http://localhost:8080/)
+- [mailcatcher](http://localhost:1080/)
