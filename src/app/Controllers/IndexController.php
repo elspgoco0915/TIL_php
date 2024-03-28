@@ -6,6 +6,7 @@ namespace App\Controllers;
 use App\Dtos\UserDto;
 use App\Enums\AccountStatus;
 use App\Enums\Food;
+use App\Service\ArrayService;
 use PDO;
 
 class IndexController
@@ -20,9 +21,13 @@ class IndexController
 
     public function index()
     {
+        // feature/#4 DTO
+        $service = new ArrayService();
+        $service->index();
+        exit;
+
         self::communicationDB();
 
-        // feature/#4 
         $user = self::getUser(1);
         $user = self::decorateUser($user);
         var_dump($user);
