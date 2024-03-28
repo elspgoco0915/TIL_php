@@ -14,9 +14,9 @@ services:
     ports:
       - 8080:80
     volumes:
-      # - ../src:/var/www/html
+      - ../src:/var/www/html
       # feature/#3_create_env_perfect_php用
-      - ../src_perfect_php:/var/www/html
+      # - ../src_perfect_php:/var/www/html
       - ./apache:/etc/apache2/sites-enabled
       - ./apache/logs:${DIR_WEB_LOGS}
       - ./php/php.ini:/usr/local/etc/php/php.ini
