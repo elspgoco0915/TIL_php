@@ -35,3 +35,15 @@ mysql -u til_php -p
 - [localhost](http://localhost:8080/)
 - [localhost/api](http://localhost:8080/)
 - [mailcatcher](http://localhost:1080/)
+
+## feature/#2_create_env_perfect_php
+
+- 構成図
+```
+app/
+Controllers/
+Core/ フレームワークを構成するクラス
+Models/
+Views/
+Web/ ドキュメントルート
+```
