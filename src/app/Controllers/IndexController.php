@@ -24,13 +24,11 @@ class IndexController
         // feature/#4 DTO
         $service = new ArrayService();
         $service->index();
-        exit;
-
-        self::communicationDB();
-
         $user = self::getUser(1);
         $user = self::decorateUser($user);
         var_dump($user);
+
+        self::communicationDB();
 
         // feature/#5 enums
         $foods = Food::cases();
@@ -105,12 +103,14 @@ class IndexController
      * @param int $id
      * @return UserDto | null
      */
-    public function getUser(int $id): UserDto | null{
+    public function getUser(int $id): UserDto | null
+    {
         $pdo = new PDO('mysql:host=til_php-db;dbname=til_php', 'til_php', 'til_php-pw');
-        $stmt = $pdo->prepare("SELECT id, name FROM users WHERE id = :id");
+        $stmt = $pdo->prepare("SELECT name, id FROM users WHERE id = :id");
         $stmt->bindValue(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
         $users = $stmt->fetch(PDO::FETCH_ASSOC);
+        var_dump($users);exit;
         return ($users) ? new UserDto(...$users) : null;
     }
 
