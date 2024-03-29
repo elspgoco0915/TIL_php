@@ -37,7 +37,7 @@
     - [x]  可変超引数を用いて、配列中身のタイプヒント
     - [ ]  ArrayObjectでタイプヒント
     - [ ]  DTO
-      - [ ]  配列を捨てよう！
+      - [ ] [配列を捨てよう！](https://speakerdeck.com/uzulla/throw-away-all-php-array-now?slide=46)
   - [x]  Enum
 - [ ]  ツール
   - [ ]  PHPUnit
@@ -48,5 +48,5 @@
   - [ ]  体系的に学ぶ 安全なWebアプリケーションの作り方
 
 ## そのほか
-- [ ]  [質問されたことを実践メモ](https://docs.google.com/spreadsheets/d/1g8SDqkLkDOcW66t0IXxamGLy_yV_lqq- [ ] - [ ] ghzukjVk64/edit#gid=0)
-- [ ]  [タスク群は時間作って消化するのもよき](https://docs.google.com/spreadsheets/d/1WIR4vQxEMOXrPJ3PWPmqJyNMYYOWu_7jIl7- [ ] - [ ] 0qJ9GA/edit#gid=0)
+- [ ]  [質問されたことを実践メモ](https://docs.google.com/spreadsheets/d/1g8SDqkLkDOcW66t0IXxamGLy_yV_lqq--ghzukjVk64/edit#gid=0)
+- [ ]  [タスク群は時間作って消化するのもよき](https://docs.google.com/spreadsheets/d/1WIR4vQxEMOXrPJ3PWPmqJyNMYYOWu_7jIl7--0qJ9GA/edit#gid=0)
