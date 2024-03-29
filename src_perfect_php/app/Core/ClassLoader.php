@@ -32,6 +32,7 @@ class ClassLoader
      */
     public function loadClass($class): void
     {
+        // TODO: デバッグ用のなので消す
         var_dump($class);
 
         foreach ($this->dirs as $dir) {
