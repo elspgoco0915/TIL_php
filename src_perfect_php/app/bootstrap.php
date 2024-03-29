@@ -10,4 +10,4 @@ $loader->registerDir(__PROJECT_ROOT__.'/app/Models');
 $loader->register();
 
 // TODO: 後で消す
-echo "execute classLoader!!";
+// echo "execute classLoader!!";
