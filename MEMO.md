@@ -13,12 +13,18 @@
   - [x]  無印ちゃんは「DI コンテナ」を入れたい
   - [x]  無印ちゃんは「ユニットテスト」を走らせたい
 
-#### feature/#2/create_env_on_perfect_php (仮)
+#### feature/#3/create_env_on_perfect_php (仮)
 - [ ]  パーフェクトPHP全乗せ
   - [ ]  php8解釈で作る
   - [ ]  DBの疎通
   - [ ]  7章フレームワークを作り切る
   - [ ]  8章ミニブログ、9章のセキュリティは別途イシューで
+- 7章残class
+  - core/Session
+  - core/Application
+  - core/HttpNotFoundException
+  - core/Controller
+  - core/View
 
 ## 学習内容
 - [ ]  超基礎PHP
