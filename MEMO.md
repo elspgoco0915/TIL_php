@@ -43,8 +43,10 @@
     - [ ]  ArrayObjectでタイプヒント
     - [ ]  DTO
       - [ ] [配列を捨てよう！](https://speakerdeck.com/uzulla/throw-away-all-php-array-now?slide=46)
-  - [x]  Enum
+  - [x] Enum
+  - [ ] ogp
 - [ ]  ツール
+  - [ ] daemon
   - [ ]  PHPUnit
   - [ ]  cron
 - [ ]  docker
