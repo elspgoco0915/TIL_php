@@ -33,11 +33,13 @@ class ClassLoader
     public function loadClass($class): void
     {
         // TODO: デバッグ用のなので消す
-        var_dump($class);
+        // var_dump($class);
 
         foreach ($this->dirs as $dir) {
             $file = "{$dir}/{$class}.php";
+            echo "{$file}<br>";
             if (is_readable($file)) {
+                echo true;
                 require_once $file;
             }
         }

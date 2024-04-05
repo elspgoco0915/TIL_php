@@ -4,7 +4,7 @@ declare(strict_types=1);
 // TODO: 型判定
 class DbRepository
 {
-    protected $con;
+    protected $con; // PDO
 
     public function __construct($con)
     {
@@ -28,6 +28,13 @@ class DbRepository
         return $this->execute($sql, $params)->fetch(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * 結果セットから、全ての行を取得する
+     * 
+     * @param string $sql 
+     * @param array $params
+     * @return array
+     */
     public function fetchAll($sql, $params = [])
     {
         return $this->execute($sql, $params)->fetchAll(PDO::FETCH_ASSOC);
