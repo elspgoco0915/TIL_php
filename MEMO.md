@@ -48,5 +48,13 @@ https://www.ritolab.com/posts/172#%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%
   - 体系的に学ぶ 安全なWebアプリケーションの作り方
 
 ## そのほか
-- [質問されたことを実践メモ](https://docs.google.com/spreadsheets/d/1g8SDqkLkDOcW66t0IXxamGLy_yV_lqq--ghzukjVk64/edit#gid=0)
-- [タスク群は時間作って消化するのもよき](https://docs.google.com/spreadsheets/d/1WIR4vQxEMOXrPJ3PWPmqJyNMYYOWu_7jIl7--0qJ9GA/edit#gid=0)
+- [ ]  [質問されたことを実践メモ](https://docs.google.com/spreadsheets/d/1g8SDqkLkDOcW66t0IXxamGLy_yV_lqq- [ ] - [ ] ghzukjVk64/edit#gid=0)
+- [ ]  [タスク群は時間作って消化するのもよき](https://docs.google.com/spreadsheets/d/1WIR4vQxEMOXrPJ3PWPmqJyNMYYOWu_7jIl7- [ ] - [ ] 0qJ9GA/edit#gid=0)
+- [ ]  
+
+
+## modelを考える案
+- シングルトンパターンで、PDOクラスは同じものを使い回す
+  - そのclassをModelで継承ではなくDIを使いたい？
+- さらに各table用のModelがそのModelを継承
+
