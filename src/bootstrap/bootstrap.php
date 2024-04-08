@@ -11,3 +11,5 @@ Configure\Configure::Instance();
 $builder = new DI\ContainerBuilder();
 $builder->addDefinitions('../bootstrap/container.php');
 $container = $builder->build();
+
+// DBのインスタンスを呼ぶ関数を作る
