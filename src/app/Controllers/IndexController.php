@@ -5,6 +5,7 @@ namespace App\Controllers;
 
 use App\Enums\AccountStatus;
 use App\Enums\Food;
+use App\Models\User;
 use PDO;
 
 class IndexController
@@ -19,6 +20,10 @@ class IndexController
 
     public function index()
     {
+        # feature/#1 共通モデル作成
+        $user = new User();
+        echo "<pre>"; var_dump($user->getUsers()); echo"</pre>";
+
         # feature/#1 メール送受信
         $to = 'mailcatcher@test.com';
         $subject = 'これはmailcatcherのテストです。';
