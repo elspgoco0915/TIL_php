@@ -1,28 +1,24 @@
 <?php
 declare(strict_types=1);
 
+// TODO: Configでいい気もする
 namespace Configure;
+
+use App\Traits\Singleton;
 
 /**
  * 環境設定クラス
- * シングルトンで定義されている
+ * シングルトンパターンで呼び出す
  */
 class Configure 
 {
-    private static $instance;
+    use Singleton;
+
     private static $config;
 
     private function __construct()
     {
         self::$config['app'] = include "app.php";
-    }
-
-    public static function Instance()
-    {
-        if (empty(self::$instance)) {
-            self::$instance = new Configure();
-        }
-        return self::$instance;
     }
 
     /**
@@ -42,21 +38,5 @@ class Configure
             $result = $result[$val];
         }
         return $result;
-    }
-
-    /**
-     * @throws \Exception
-     */
-    public final function __clone()
-    {
-        throw new \Exception('This Instance is Not Clone');
-    }
-
-    /**
-     * @throws \Exception
-     */
-    public final function __wakeup()
-    {
-        throw new \Exception('This Instance is Not unserialize');
     }
 }

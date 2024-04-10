@@ -7,8 +7,10 @@ namespace App\Models;
 use Exception;
 use PDO;
 use App\Traits\Singleton;
+use Configure\Configure;
 
 // TODO: app/models以外に適した配置を考える
+// TODO: extends PDOのパターンでもできる？
 final class Database 
 {
     use Singleton;
@@ -17,10 +19,13 @@ final class Database
 
     private function __construct()
     {
-        $options = [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-        ];
-        // TODO: 環境変数で呼ぶ
-        $this->pdo = new PDO('mysql:host=til_php-db;dbname=til_php', 'til_php', 'til_php-pw', $options);
+        // DB設定
+        $host = Configure::read('app.mysql.host');
+        $db = Configure::read('app.mysql.db');
+        $user = Configure::read('app.mysql.user');
+        $pw = Configure::read('app.mysql.pw');
+        $options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
+        // PDOのインスタンス作成
+        $this->pdo = new PDO("mysql:host={$host};dbname={$db}", "{$user}", "{$pw}", $options);
     }
 }
