@@ -7,21 +7,28 @@ namespace Configure;
 use App\Traits\Singleton;
 
 /**
- * 環境設定クラス
- * シングルトンパターンで呼び出す
+ * 環境変数設定
+ * シングルトンパターンで呼び出している
  */
 class Configure 
 {
     use Singleton;
 
-    private static $config;
+    private static array $const = [];
 
+    /**
+     * コンストラクタ
+     * "./{$fileName}.php"の定数群を読み込む
+     */
     private function __construct()
     {
-        self::$config['app'] = include "app.php";
+        $fileName = "app";
+        self::$const[$fileName] = include "{$fileName}.php";
     }
 
     /**
+     * 環境変数取得
+     * 例) `Configure::read('app.sample.env');` で呼び出す
      * @param string $keys
      * @return mixed
      * @throws \Exception
@@ -33,7 +40,7 @@ class Configure
         }
         
         $keys = explode('.', $keys);
-        $result = self::$config;
+        $result = self::$const;
         foreach ($keys as $key => $val) {
             $result = $result[$val];
         }

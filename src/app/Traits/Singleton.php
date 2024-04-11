@@ -8,25 +8,15 @@ namespace App\Traits;
  */
 trait Singleton
 {
-    // TODO: プロパティの$instanceがないのになぜ機能するか理解する
+    static $instance = null;
 
     // NOTE: trait使用元のclassでコンストラクタをオーバライドして使用する
-    protected function __construct(){}
+    final protected function __construct(){}
 
     final public static function getInstance()
     {
-        static $instance;
-        return $instance ?? $instance = new self;
+        return static::$instance ?? static::$instance = new static();
     }
-
-    // TODO: /src/config/Configure.phpの旧メソッドと比較する
-    // public static function Instance()
-    // {
-    //     if (empty(self::$instance)) {
-    //         self::$instance = new Configure();
-    //     }
-    //     return self::$instance;
-    // }
 
     /**
      * @throws \Exception
