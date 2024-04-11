@@ -1,31 +1,34 @@
 <?php
 declare(strict_types=1);
 
+// TODO: Configでいい気もする
 namespace Configure;
 
+use App\Traits\Singleton;
+
 /**
- * 環境設定クラス
- * シングルトンで定義されている
+ * 環境変数設定
+ * シングルトンパターンで呼び出している
  */
 class Configure 
 {
-    private static $instance;
-    private static $config;
+    use Singleton;
 
+    private static array $const = [];
+
+    /**
+     * コンストラクタ
+     * "./{$fileName}.php"の定数群を読み込む
+     */
     private function __construct()
     {
-        self::$config['app'] = include "app.php";
-    }
-
-    public static function Instance()
-    {
-        if (empty(self::$instance)) {
-            self::$instance = new Configure();
-        }
-        return self::$instance;
+        $fileName = "app";
+        self::$const[$fileName] = include "{$fileName}.php";
     }
 
     /**
+     * 環境変数取得
+     * 例) `Configure::read('app.sample.env');` で呼び出す
      * @param string $keys
      * @return mixed
      * @throws \Exception
@@ -37,26 +40,10 @@ class Configure
         }
         
         $keys = explode('.', $keys);
-        $result = self::$config;
+        $result = self::$const;
         foreach ($keys as $key => $val) {
             $result = $result[$val];
         }
         return $result;
-    }
-
-    /**
-     * @throws \Exception
-     */
-    public final function __clone()
-    {
-        throw new \Exception('This Instance is Not Clone');
-    }
-
-    /**
-     * @throws \Exception
-     */
-    public final function __wakeup()
-    {
-        throw new \Exception('This Instance is Not unserialize');
     }
 }

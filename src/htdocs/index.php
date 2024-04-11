@@ -7,5 +7,5 @@ require_once "../bootstrap/bootstrap.php";
 
 $controller = $container->get('IndexController');
 $controller->index();
-// $controller = new SampleController();
+// $controller = new App\Controllers\SampleController();
 // $controller->index();
