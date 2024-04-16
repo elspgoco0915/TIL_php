@@ -8,6 +8,7 @@ use App\Enums\AccountStatus;
 use App\Enums\Food;
 use App\Models\User;
 use App\Service\ArrayService;
+use App\Service\BitMaskService;
 use App\Enums\PlayerStatus;
 use App\ExampleClasses\Player;
 use PDO;
@@ -83,18 +84,10 @@ class IndexController
         echo $status->name;
         echo $status->text();
 
-        // // 一旦中止
-        // $player = new Player();
-        // // 毒を追加
-        // $state = $player->setState(PlayerStatus::POISON);
-        // // 麻痺を追加したいが上書きされてしまう
-        // $player->setState(PlayerStatus::PARALYSIS);
-        // // ビット演算子を使用する
-        // $player->setState($state | PlayerStatus::PARALYSIS);
-        // echo $player->getState();
-        // exit;
+        // feature/#7_bitmask_flags
+        $bitmask = new BitMaskService();
+        $bitmask->index();
 
-        var_dump($this->SampleService->index());exit;
     }
 
 

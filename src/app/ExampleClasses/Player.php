@@ -7,7 +7,15 @@ use App\Enums\PlayerStatus;
 
 class Player {
     
-    private PlayerStatus $state;
+    public int $state = 0;
+
+    /**
+     * コンストラクタ
+     */
+    public function __construct()
+    {
+        $this->setState(PlayerStatus::NORMAL->value);
+    } 
 
     /**
      * ゲッター
@@ -15,7 +23,7 @@ class Player {
      */
     public function getState(): int
     {
-        return $this->state->value;
+        return $this->state;
     }
 
     /**
