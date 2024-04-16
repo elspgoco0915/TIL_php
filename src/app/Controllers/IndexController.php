@@ -8,6 +8,8 @@ use App\Enums\AccountStatus;
 use App\Enums\Food;
 use App\Models\User;
 use App\Service\ArrayService;
+use App\Enums\PlayerStatus;
+use App\ExampleClasses\Player;
 use PDO;
 
 class IndexController
@@ -80,7 +82,17 @@ class IndexController
         $status = AccountStatus::ACTIVE;
         echo $status->name;
         echo $status->text();
-        
+
+        // // 一旦中止
+        // $player = new Player();
+        // // 毒を追加
+        // $state = $player->setState(PlayerStatus::POISON);
+        // // 麻痺を追加したいが上書きされてしまう
+        // $player->setState(PlayerStatus::PARALYSIS);
+        // // ビット演算子を使用する
+        // $player->setState($state | PlayerStatus::PARALYSIS);
+        // echo $player->getState();
+        // exit;
 
         var_dump($this->SampleService->index());exit;
     }
