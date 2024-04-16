@@ -25,6 +25,10 @@ class IndexController
 
     public function index()
     {
+        // feature/#7_bitmask_flags
+        $bitmask = new BitMaskService();
+        $bitmask->index();
+
         # feature/#1 共通モデル作成
         $user = new User();
         echo "<pre>"; var_dump($user->getUsers()); echo"</pre>";
@@ -83,11 +87,6 @@ class IndexController
         $status = AccountStatus::ACTIVE;
         echo $status->name;
         echo $status->text();
-
-        // feature/#7_bitmask_flags
-        $bitmask = new BitMaskService();
-        $bitmask->index();
-
     }
 
 
