@@ -12,6 +12,7 @@
   - [x]  無印ちゃんは「Configure クラス」を使いたい
   - [x]  無印ちゃんは「DI コンテナ」を入れたい
   - [x]  無印ちゃんは「ユニットテスト」を走らせたい
+- [ ]  docker-compose時にsqlを実行してテーブルを用意する
 
 #### feature/#3/create_env_on_perfect_php (仮)
 - [ ]  パーフェクトPHP全乗せ
@@ -38,18 +39,27 @@
   - [ ]  SQL100本ノック
   - [ ]  （git100本ノックはここに書いても感はある）
 - [ ]  細かな項目
+  - [ ] data-uriとfetchAPIの活用
+  - [ ] HTML5では、data-* の書式でカスタム属性 ( Custom Data Attribute )を定義できるらしい
+  - [ ] キャッシュの活用方法
+    - [ ] ex: メニューバーの通知などをDBで取得し、以降はキャッシュにするとか？
+  - [ ] モジュール(modules)の構造 
   - [ ]  BIT演算
   - [ ]  array shapes記法などの配列の型
     - [x]  可変超引数を用いて、配列中身のタイプヒント
     - [ ]  ArrayObjectでタイプヒント
     - [ ]  DTO
-      - [ ]  配列を捨てよう！
-  - [x]  Enum
+      - [ ] [配列を捨てよう！](https://speakerdeck.com/uzulla/throw-away-all-php-array-now?slide=46)
+    - [ ]  ジェネレーター
+  - [x] Enum
+  - [ ] ogp
 - [ ]  ツール
+  - [ ] daemon
   - [ ]  PHPUnit
   - [ ]  cron
 - [ ]  docker
   - [ ]  mailcatcher載せてみる
+  - [ ]  キャッシュ関連(redis)
 - [ ]  セキュリティ
   - [ ]  体系的に学ぶ 安全なWebアプリケーションの作り方
 
