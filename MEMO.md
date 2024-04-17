@@ -12,6 +12,7 @@
   - [x]  無印ちゃんは「Configure クラス」を使いたい
   - [x]  無印ちゃんは「DI コンテナ」を入れたい
   - [x]  無印ちゃんは「ユニットテスト」を走らせたい
+- [ ]  docker-compose時にsqlを実行してテーブルを用意する
 
 #### feature/#3/create_env_on_perfect_php (仮)
 - [ ]  パーフェクトPHP全乗せ

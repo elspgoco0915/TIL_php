@@ -8,6 +8,9 @@ use App\Enums\AccountStatus;
 use App\Enums\Food;
 use App\Models\User;
 use App\Service\ArrayService;
+use App\Service\BitMaskService;
+use App\Enums\PlayerStatus;
+use App\ExampleClasses\Player;
 use PDO;
 
 class IndexController
@@ -22,6 +25,10 @@ class IndexController
 
     public function index()
     {
+        // feature/#7_bitmask_flags
+        $bitmask = new BitMaskService();
+        $bitmask->index();
+
         # feature/#1 共通モデル作成
         $user = new User();
         echo "<pre>"; var_dump($user->getUsers()); echo"</pre>";
@@ -80,9 +87,6 @@ class IndexController
         $status = AccountStatus::ACTIVE;
         echo $status->name;
         echo $status->text();
-        
-
-        var_dump($this->SampleService->index());exit;
     }
 
 

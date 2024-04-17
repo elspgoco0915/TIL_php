@@ -26,4 +26,15 @@ abstract class Model {
         $rows = $statement->fetchAll();
         return $rows;
     }
+
+    /**
+     * 登録する
+     */
+    public function insert(string $sql): void
+    {
+        $statement = $this->pdo->prepare($sql);
+        // TODO: 動的にinsertできるようにする 型の判定も
+        // $statement->bindValue(':test', $name, PDO::PARAM_STR);
+        $statement->execute();
+    }
 }
