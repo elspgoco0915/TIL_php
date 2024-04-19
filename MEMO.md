@@ -66,7 +66,8 @@
 ## そのほか
 - [ ]  [質問されたことを実践メモ](https://docs.google.com/spreadsheets/d/1g8SDqkLkDOcW66t0IXxamGLy_yV_lqq-ghzukjVk64/edit#gid=0)
 - [ ]  [タスク群は時間作って消化するのもよき](https://docs.google.com/spreadsheets/d/1WIR4vQxEMOXrPJ3PWPmqJyNMYYOWu_7jIl7-0qJ9GA/edit#gid=0)
-- [ ]  
+- [ ]  [git 100本ノック](https://qiita.com/ueki05/items/5c233773e3186989bfd3)
+- [ ]  [mysql 100本ノック](https://qiita.com/Ryo-Nakano/items/8961c956babaf0976b4a)
 
 ### modelを考える案
 - シングルトンパターンで、PDOクラスは同じものを使い回す
