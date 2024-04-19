@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Dtos\DbPlaceHolderDto as Value;
+use App\Enums\PdoParamType;
+
 /**
  * NOTE: 元となるSQL
  * docker-compose 実行時に自動的にSQLを実行するようにする 
@@ -14,6 +17,9 @@ namespace App\Models;
  */
 class PlayerStatus extends Model
 {
+    // TODO: $db名を持たせる
+    protected string $table = 'player_statuses';
+
     public function __construct()
     {
         parent::__construct();
@@ -33,11 +39,15 @@ class PlayerStatus extends Model
      * @param int $userId
      * @param int $status
      */
+    // TODO: 関数名を変える
     public function insertTest(int $userId, int $status)
     {
-        // TODO: userIdカラムの設定を直したら、SQLを直す
-        $sql = "INSERT INTO player_statuses(user_id, status) VALUES({$userId}, {$status})";
-        $this->insert($sql);
+        // TODO: placeholderという命名、含め全体の命名を変える
+        $placeholders = [
+            new Value(name: 'user_id', value: $userId, type: PdoParamType::INT),
+            new Value(name: 'status', value: $status, type: PdoParamType::INT),
+        ];
+        $this->insert($this->table, ...$placeholders);
     }
 
 }

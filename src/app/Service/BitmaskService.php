@@ -18,7 +18,8 @@ class BitMaskService {
         // DB疎通確認
         $model = new PlayerStatusModel();
         $array = $model->getAll();
-        $endUserId = end($array)['user_id'];
+        $endUserId = end($array)['user_id'] ?? 0;
+        // var_dump($endUserId);exit;
         $model->insertTest($endUserId+1, 0);
         echo "<pre>";
         var_dump($model->getAll());
