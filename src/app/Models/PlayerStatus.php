@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Dtos\DbPlaceHolderDto as Value;
+// TODO: 命名なおす
+use App\Dtos\DbPlaceHolderColumnDto as Value;
+use App\Dtos\DbPlaceHoldersDto;
 use App\Enums\PdoParamType;
 
 /**
@@ -43,11 +45,22 @@ class PlayerStatus extends Model
     public function insertTest(int $userId, int $status)
     {
         // TODO: placeholderという命名、含め全体の命名を変える
-        $placeholders = [
+        // $placeholders = [
+        //     new Value(name: 'user_id', value: $userId, type: PdoParamType::INT),
+        //     new Value(name: 'status', value: $status, type: PdoParamType::INT),
+        // ];
+        $placeholders = new DbPlaceHoldersDto(
             new Value(name: 'user_id', value: $userId, type: PdoParamType::INT),
             new Value(name: 'status', value: $status, type: PdoParamType::INT),
-        ];
-        $this->insert($this->table, ...$placeholders);
+        ); 
+
+        // echo "<pre>";
+        // var_dump($placeholdersTest->toArray());
+        // exit;
+        
+        // var_dump($placeholders->toArray());exit;
+        // $this->insert($this->table, ...$placeholders);
+        $this->insert($this->table, $placeholders);
     }
 
 }

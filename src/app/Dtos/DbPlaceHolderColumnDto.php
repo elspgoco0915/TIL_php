@@ -5,10 +5,19 @@ namespace App\Dtos;
 
 use App\Enums\PdoParamType;
 
-class DbPlaceHolderDto {
+class DbPlaceHolderColumnDto {
+
+    // TODO: 命名
+    public string $placeholder;
+
+    /**
+     * コンストラクタ
+     */
     public function __construct(
         public string $name,
         public mixed $value,
         public PdoParamType $type,
-    ){}
+    ){
+        $this->placeholder = ":{$this->name}";
+    }
 }
