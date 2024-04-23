@@ -28,4 +28,9 @@ final class Database
         // PDOのインスタンス作成
         $this->pdo = new PDO("mysql:host={$host};dbname={$db}", "{$user}", "{$pw}", $options);
     }
+
+    // TODO: pdoのデストラクタを作って
+    // TODO: insertのbindValueをこっちに逃す
+    // TODO: prepare, executeなどもこっちに内包する？
+
 }
