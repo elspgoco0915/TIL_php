@@ -44,23 +44,23 @@ class PlayerStatus extends Model
     // TODO: 関数名を変える
     public function insertTest(int $userId, int $status)
     {
+        $isSplat = true;
         // TODO: placeholderという命名、含め全体の命名を変える
-        // $placeholders = [
-        //     new Value(name: 'user_id', value: $userId, type: PdoParamType::INT),
-        //     new Value(name: 'status', value: $status, type: PdoParamType::INT),
-        // ];
-        $placeholders = new DbPlaceHoldersDto(
-            new Value(name: 'user_id', value: $userId, type: PdoParamType::INT),
-            new Value(name: 'status', value: $status, type: PdoParamType::INT),
-        ); 
-
-        // echo "<pre>";
-        // var_dump($placeholdersTest->toArray());
-        // exit;
-        
-        // var_dump($placeholders->toArray());exit;
-        // $this->insert($this->table, ...$placeholders);
-        $this->insert($this->table, $placeholders);
+        if ($isSplat) {
+            // splat operator ver.
+            $placeholders = [
+                new Value(name: 'user_id', value: $userId, type: PdoParamType::INT),
+                new Value(name: 'status', value: $status, type: PdoParamType::INT),
+            ];
+            $this->insert($this->table, ...$placeholders);    
+        } else {
+            // DTO ver.
+            $placeholders = new DbPlaceHoldersDto([
+                new Value(name: 'user_id', value: $userId, type: PdoParamType::INT),
+                new Value(name: 'status', value: $status, type: PdoParamType::INT),
+            ]);
+            $this->insertSample($this->table, $placeholders);
+        }
     }
 
 }

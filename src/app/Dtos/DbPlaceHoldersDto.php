@@ -5,6 +5,7 @@ namespace App\Dtos;
 
 use App\Dtos\DbPlaceHolderColumnDto;
 use App\Dtos\Dto;
+use PDO;
 
 /**
  * DBのプレースホルダーをまとめる
@@ -12,41 +13,27 @@ use App\Dtos\Dto;
  */
 class DbPlaceHoldersDto extends Dto 
 {
-    // NOTE: プロパティでは可変引数を用いたsplat operatorができなかったのでdocを記載
-    /** @var array<DbPlaceHolderColumnDto> */
-    public array $columns;
-    
+    public string $joinName;
+    public string $joinPlaceholder;
+
     /**
      * コンストラクタ
      */
     public function __construct(
-        DbPlaceHolderColumnDto ...$placeholders
+        /** @var array<DbPlaceHolderColumnDto> */
+        public array $placeholders
     ){
-        $this->columns = $placeholders;
-    }
-
-    // /**
-    //  * カラムを返す
-    //  * @return array
-    //  */
-    // public function toArray(): array
-    // {
-    //     return json_decode(json_encode($this->columns), true);
-    // }
-
-    /**
-     * カラム名を”,”区切りの文字列にして返す
-     */
-    public function getColumnString(): string
-    {
-        return implode(", ", array_column($this->toArray($this->columns), 'name'));
+        // カラム名,プレースホルダーを ”,” 区切りの文字列にして返す
+        $this->joinName = implode(", ", array_column($this->toArray($this->placeholders), 'name'));
+        $this->joinPlaceholder = implode(", ", array_column($this->toArray($this->placeholders), 'placeholder'));
     }
 
     /**
-     * プレースホルダーを”,”区切りの文字列にして返す
+     * カラムを返す
+     * @return array
      */
-    public function getPlaceHolderString(): string
+    public function toArray(): array
     {
-        return implode(", ", array_column($this->toArray($this->columns), 'placeholder'));
+        return json_decode(json_encode($this->placeholders), true);
     }
 }

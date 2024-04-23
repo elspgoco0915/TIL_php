@@ -13,9 +13,8 @@ abstract class Dto
      * @param mixed $property
      * @return array
      */
-    public function toArray($property = null): array
+    public function toArray(): array
     {
-        if (isset($propety)) $property = $this;
-        return json_decode(json_encode($property), true);
+        return json_decode(json_encode($this), true);
     }
 }
