@@ -50,7 +50,9 @@
     - [ ]  ArrayObjectでタイプヒント
     - [ ]  DTO
       - [ ] [配列を捨てよう！](https://speakerdeck.com/uzulla/throw-away-all-php-array-now?slide=46)
-    - [ ]  ジェネレーター
+    - [ ] ジェネレーター
+    - [ ] イテレーター
+    - [ ] CSV関連の処理を作る(インプットとアウトプット)
   - [x] Enum
   - [ ] ogp
 - [ ]  ツール
