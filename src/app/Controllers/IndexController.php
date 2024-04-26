@@ -9,6 +9,7 @@ use App\Enums\Food;
 use App\Models\User;
 use App\Service\ArrayService;
 use App\Service\BitMaskService;
+use App\Service\CsvService;
 use App\Enums\PlayerStatus;
 use App\ExampleClasses\Player;
 use PDO;
@@ -25,6 +26,10 @@ class IndexController
 
     public function index()
     {
+        // feature/#8_create_csv
+        $csv =  new CsvService();
+        $csv->index();
+
         // feature/#7_bitmask_flags
         $bitmask = new BitMaskService();
         $bitmask->index();
