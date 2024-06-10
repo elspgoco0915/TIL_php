@@ -64,6 +64,26 @@
   - [ ]  キャッシュ関連(redis)
 - [ ]  セキュリティ
   - [ ]  体系的に学ぶ 安全なWebアプリケーションの作り方
+  - [ ] シンプルなindex, confirm, save（post）
+    - [ ] csrfの理解
+    - [ ] postする値を配列で格納する(下記例)
+
+```php
+<form action='/confirm' method="post">
+  <input type="hidden" name="csrf" value="<?= $csrfToken; ?>">
+  <table>
+    <tr>
+      <th><label for="form[registrationNumber]">登録番号</label></th>
+      <td><input type="text" id="form[registrationNumber]" name="form[registrationNumber]" value="<?= $attributes['registrationNumber'] ?? '' ?>"></td>
+    </tr>
+    <tr>
+      <th><label for="form[loginId]">ID</label></th>
+      <td><input type="text" id="form[loginId]" name="form[loginId]" value="<?= $attributes['loginId'] ?? '' ?>"></td>
+    </tr>
+</table>
+  <button type="submit">確認</button>
+</form>
+```
 
 ## そのほか
 - [ ]  [質問されたことを実践メモ](https://docs.google.com/spreadsheets/d/1g8SDqkLkDOcW66t0IXxamGLy_yV_lqq-ghzukjVk64/edit#gid=0)
