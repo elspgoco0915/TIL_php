@@ -15,32 +15,31 @@ services:
       - 8080:80
     volumes:
       - ../src:/var/www/html
-      # feature/#3_create_env_perfect_php用
-      # - ../src_perfect_php:/var/www/html
       - ./apache:/etc/apache2/sites-enabled
       - ./apache/logs:${DIR_WEB_LOGS}
       - ./php/php.ini:/usr/local/etc/php/php.ini
-  # MySQL
-  db: 
-    container_name: ${COMPOSE_PROJECT_NAME}-db
-    image: mysql:8.0
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpw
-      MYSQL_DATABASE: ${COMPOSE_PROJECT_NAME}
-      MYSQL_USER: ${COMPOSE_PROJECT_NAME}
-      MYSQL_PASSWORD: ${COMPOSE_PROJECT_NAME}-pw
-      TZ: 'Asia/Tokyo'
-    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-    ports:
-      - "13306:3306"
-    volumes:
-      - ./db/data:/var/lib/mysql
-      - ./db/log:/var/log/mysql
-      - ./db/my.cnf:/etc/mysql/conf.d/my.cnf
-      - ./db/sql:/docker-entrypoint-initdb.d
-  # maicatcher
-  mail:
-    image: schickling/mailcatcher
-    ports:
-      - "1080:1080"
-      - "1025:1025"
+
+  # # MySQL
+  # db: 
+  #   container_name: ${COMPOSE_PROJECT_NAME}-db
+  #   image: mysql:8.0
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: rootpw
+  #     MYSQL_DATABASE: ${COMPOSE_PROJECT_NAME}
+  #     MYSQL_USER: ${COMPOSE_PROJECT_NAME}
+  #     MYSQL_PASSWORD: ${COMPOSE_PROJECT_NAME}-pw
+  #     TZ: 'Asia/Tokyo'
+  #   command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+  #   ports:
+  #     - "13306:3306"
+  #   volumes:
+  #     - ./db/data:/var/lib/mysql
+  #     - ./db/log:/var/log/mysql
+  #     - ./db/my.cnf:/etc/mysql/conf.d/my.cnf
+  #     - ./db/sql:/docker-entrypoint-initdb.d
+  # # maicatcher
+  # mail:
+  #   image: schickling/mailcatcher
+  #   ports:
+  #     - "1080:1080"
+  #     - "1025:1025"
