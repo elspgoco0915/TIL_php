@@ -14,6 +14,7 @@ git checkout super-simple-api
 
 ## docker起動の仕方
 - クローンしたプロジェクトで以下のコマンドでdockerディレクトリに移動し、以下のdockerコマンドを入力します
+- 初回は時間がかかると思います
 ```bash
 cd ./docker/
 docker-compose up -d --build
