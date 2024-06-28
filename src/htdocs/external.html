@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>フロント→PHP→外部API→PHP→フロント</h1>
+    <p>郵便番号から、県名を取得して出力します</p>
+
+    <h2>フロント側</h2>
+    <!-- HTML -->
+    <p>郵便番号7桁の半角数字をいれて</p>
+    <input type="number" id="test-number" name="number">
+    <p>ボタンを押すとAPIを叩ける</p>
+    <button id="test-btn">API(http://localhost:8080/api/search-prefecture.php)を叩きます</button>
+    <hr>
+    <p>jsのスクリプトでAPIの結果を加工して、このフォームに入力します</p>
+    <p>県名：<input type="text" id="test-input" disabled></p>
+    <p>実際は以下のようなjsonの結果をフロントでもらっています</p>
+    <p>このjsonの各値で必要なものをフロントで加工して利用しているのです</p>
+    <textarea id="test-textarea" disabled style="width: 500px; height: 100px"></textarea>
+
+    <hr>
+    <h2>ちなみに</h2>
+    <a href="http://localhost:8080/api/search-prefecture.php" target="_blank" rel="noopener noreferrer">APIのリクエスト先はここ</a>
+    <p>バックエンド側ではPHPで処理を書いて、jsonを返しているだけなのです</p>
+
+
+    <!-- jsのスクリプト -->
+    <script>
+        const btn = document.getElementById('test-btn');
+        const input = document.getElementById('test-input');
+        const number = document.getElementById('test-number');
+        const textarea = document.getElementById('test-textarea');
+
+        // API1を叩くメソッド
+        const fetchApi = () => {
+            // 入力した値を取得してnumという変数に格納する
+            const params = {
+                "num" : number.value,
+            };
+            // その変数をクエリパラメータに使うように文字列に変換する
+            // "num=1"みたいな感じ
+            const query = new URLSearchParams(params);
+            // GETメソッドでリクエストする
+            fetch('/api/search-prefecture.php?'+query, {
+                method: 'GET',
+                headers: new Headers({'Content-type' : 'application/x-www-form-urlencoded' })
+            })
+            // APIを叩いた結果のjsonを取得
+            .then((response) => {
+                return response.json();
+            })
+            // その結果を画面下のフォームに入力
+            .then((obj) => {
+                textarea.value = JSON.stringify(obj, null, "\t");
+                input.value = obj.prefecture;
+            })
+            // エラーが起きた場合は処理を終了し、コンソールにエラーを表示する、
+            .catch((error) => {
+                console.log(error);
+            });
+        };
+
+        // ボタンを押すとfetchApiの一連の処理を実行します
+        btn.addEventListener("click", fetchApi);
+
+    </script>
+</body>
+</html>
