@@ -5,7 +5,6 @@ header('Content-Type: application/json; charset=UTF-8');
 /**
  * バリデーションもどき
  */
-// クエリパラメータ(?num=数字)が設定されていなかったら、0を返す
 // バリデーションもどき
 
 // 失敗用に返す配列
