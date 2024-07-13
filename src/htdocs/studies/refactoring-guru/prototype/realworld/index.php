@@ -33,7 +33,6 @@ class Page
 
     /**
      * コンストラクタ
-     * cloneされた際は__construct→__cloneの順番で呼ばれる
      */
     public function __construct(string $title, string $body, Author $author)
     {
