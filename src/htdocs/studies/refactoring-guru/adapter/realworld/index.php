@@ -3,19 +3,25 @@
 namespace RefactoringGuru\Adapter\RealWorld;
 
 /**
- * The Target interface represents the interface that your application's classes
- * already follow.
+ * Adapter パターンでは、 自分のコードの大部分と互換性がない他社作成のクラスや旧来のクラスを使えるようにします。
+ * たとえば、 Slack,Facebook,SMS（その他適宜） などの他社のサービスをサポートするために自分のアプリの通知インターフェースを書き直す代わりに
+ * アプリからの呼び出しを、 それぞれの他社作成クラスが要求するインターフェースとデータ形式に適合させる特別なラッパーを書くことができます。
+ */
+
+/**
+ * Targetインターフェースは、アプリケーションのクラスが既に従っているインターフェースを表します。
  */
 interface Notification
 {
     public function send(string $title, string $message);
 }
 
-
 /**
- * 
+ * Targetインタフェースに従う既存クラスの例
+ * 実際は、多くのアプリでは、このようなインターフェースが明確に定義されていない可能性があります。
+ * そのような状況の場合の最善策は、アプリケーションの既存のクラスの１つから、Adapterを拡張することです。
+ * それが面倒な場合 (たとえば、SlackNotification が EmailNotification のサブクラスのように感じられない場合)、インターフェースを抽出することが最初のステップになります。
  */
-
 class EmailNotification implements Notification
 {
     private $adminEmail;
@@ -31,8 +37,11 @@ class EmailNotification implements Notification
     }
 }
 
-
-
+/**
+ * AdapteeはTargetインターフェースと互換性のない便利なクラス
+ * コードはサードパーティのライブラリによって提供される可能性があるため、
+ * クラスのコードをTargetインターフェースに合わせて変更することはできません
+ */
 class SlackApi
 {
     private $login;
@@ -57,7 +66,10 @@ class SlackApi
     }
 }
 
-
+/**
+ * AdapterはTargetインターフェースとAdapteeクラスをつなげるクラス
+ * この場合は、アプリケーションはSlack APIを使用して通知を送信できる
+ */
 class SlackNotification implements Notification
 {
     private $slack;
@@ -70,8 +82,8 @@ class SlackNotification implements Notification
     }
 
     /**
-     * An Adapter is not only capable of adapting interfaces, but it can also
-     * convert incoming data to the format required by the Adaptee.
+     * Adapterはインターフェースを適応できるだけでなく
+     * 受信データをアダプタ対象に必要な形式に変換することもできます
      */
     public function send(string $title, string $message): void
     {
@@ -81,8 +93,9 @@ class SlackNotification implements Notification
     }
 }
 
-
-
+/**
+ * クライアントコードはTargetインターフェースに従う任意のクラスで動作します
+ */
 function clientCode(Notification $notification)
 {
     // ...
