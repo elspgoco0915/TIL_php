@@ -67,6 +67,8 @@
   - [ ] シンプルなindex, confirm, save（post）
     - [ ] csrfの理解
     - [ ] postする値を配列で格納する(下記例)
+- [ ] 二重サブミット
+  - [ ] https://qiita.com/syobochim/items/120109315f671918f28d#-3-prg%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3
 
 ```php
 <form action='/confirm' method="post">
